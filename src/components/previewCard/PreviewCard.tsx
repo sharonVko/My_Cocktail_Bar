@@ -1,17 +1,23 @@
-const PreviewCard = () => {
+import React from "react";
+import { Cocktail } from "../../App";
+interface IPreviewCardProps {
+  cocktail: Cocktail;
+}
+
+const PreviewCard: React.FC<IPreviewCardProps> = ({ cocktail }) => {
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg">
       <img
         className="w-full"
-        src="/img/card-top.jpg"
-        alt="Sunset in the mountains"
+        src={cocktail.strDrinkThumb}
+        alt={cocktail.strDrink}
       />
       <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-        <p className="text-gray-700 text-base">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
-          quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
-          nihil.
+        <div className="font-bold text-xl mb-2">{cocktail.strDrink}</div>
+        <p className="text-gray-400 text-base">
+          {cocktail.strInstructions
+            ? cocktail.strInstructions.substring(0, 100) + "..."
+            : "Kein Rezept verfügbar."}
         </p>
       </div>
     </div>
